@@ -109,7 +109,7 @@ cp ~/.kube/config kubeconfig
 ls -la kubeconfig
 ```
 
-⚠️ **Nota Sicurezza:** Il file `kubeconfig` è già incluso nel `.gitignore` per evitare commit accidentali. Non committare MAI questo file!
+⚠️ **Nota Sicurezza:** Il file `kubeconfig` è già incluso nel `.gitignore` per evitare commit accidentali.
 
 #### 2. Build dell'immagine Docker
 
@@ -410,23 +410,6 @@ curl -X GET http://localhost:8000/api/v1/tenants/studio-test \
   -H "Authorization: Bearer digital-bubble-static-token-2025"
 ```
 
-## Struttura Progetto
-
-```
-digital-bubble-api/
-├── app/
-│   ├── __init__.py
-│   ├── main.py              # Entry point FastAPI
-│   ├── models.py            # Modelli Pydantic
-│   ├── argocd_manager.py    # Logica business ArgoCD
-│   ├── k8s_client.py        # Client Kubernetes
-│   └── auth.py              # Autenticazione JWT
-├── k8s/                     # Manifest Kubernetes per deploy
-├── requirements.txt
-├── .env.example
-└── README.md
-```
-
 ## Containerizzazione e Deployment
 
 ### Dockerfile
@@ -492,7 +475,7 @@ L'applicazione usa il modulo `logging` di Python. I log includono:
 3. Configura CORS con domini specifici (non `*`)
 4. Usa HTTPS
 5. Implementa rate limiting
-6. Valuta autenticazione più robusta (OAuth2, etc.)
+6. Si può pensare ad un'autenticazione più robusta (OAuth2, etc.)
 
 ## Test Effettuati
 
@@ -577,23 +560,7 @@ kubectl get secret tenant-secrets-studio-esempio -n studio-esempio -o jsonpath='
 kubectl get all -n studio-esempio
 ```
 
-## Struttura Progetto
 
-```
-digital-bubble-api/
-├── app/
-│   ├── __init__.py
-│   ├── main.py              # Entry point FastAPI con 5 endpoint REST
-│   ├── models.py            # Validazione input con Pydantic
-│   ├── argocd_manager.py    # Logica business ArgoCD
-│   ├── k8s_client.py        # Inizializzazione Kubernetes client
-│   └── auth.py              # Autenticazione JWT (token statico)
-├── k8s/                     # (futuro) Manifest per deploy su AKS
-├── requirements.txt         # Dipendenze Python
-├── Dockerfile              # Per containerizzazione
-├── .env.example            # Template configurazione
-├── .gitignore              # Include kubeconfig per sicurezza
-└── README.md               # Questa documentazione
 ```
 
 ## FAQ
